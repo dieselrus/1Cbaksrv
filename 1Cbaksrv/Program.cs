@@ -17,7 +17,7 @@ namespace _1Cbaksrv
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                new Service1() 
+                new BuckUper1C() 
             };
             ServiceBase.Run(ServicesToRun);
         }
