@@ -1,0 +1,8 @@
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Release\1Cbaksrv.exe.config
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Release\1Cbaksrv.exe
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Release\1Cbaksrv.pdb
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\obj\Release\_1Cbaksrv.ProjectInstaller.resources
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\obj\Release\_1Cbaksrv.BuckUper1C.resources
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\obj\Release\1Cbaksrv.csproj.GenerateResource.Cache
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\obj\Release\1Cbaksrv.exe
+G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\obj\Release\1Cbaksrv.pdb
