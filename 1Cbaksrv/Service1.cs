@@ -10,29 +10,33 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Configuration;
 
 namespace _1Cbaksrv
 {
 
     public partial class BuckUper1C : ServiceBase
     {
-
+        // Create a new FileSystemWatcher and set its properties.
+        FileSystemWatcher watcher = new FileSystemWatcher();
+        
         private INI _ini = new INI(AppDomain.CurrentDomain.BaseDirectory + "\\Task.ini");
         public String [,] lstTask;
 
         private Timer tm = new Timer();
 
-        private string sSource;
-        private string sLog;
-        private string sEvent;
+        string sSource;
+        string sLog;
+        //string sEvent;
 
         public BuckUper1C()
         {
             InitializeComponent();
 
-            sSource = "1C BackUper";
-            sLog = "Application";
-            sEvent = "Sample Event";
+            sSource = "BackUper1C";
+            //sLog = "Application";
+            sLog = "BackUper1C";
+            //sEvent = "Sample Event";
 
             if (!System.Diagnostics.EventLog.SourceExists(sSource))
             {
@@ -41,14 +45,34 @@ namespace _1Cbaksrv
 
             eventLog1.Source = sSource;
             eventLog1.Log = sLog;
+      
+        }
 
+        // Define the event handlers.
+        private void OnChanged(object source, FileSystemEventArgs e)
+        {
+            // Specify what is done when a file is changed, created, or deleted.
+            // Console.WriteLine("File: " + e.FullPath + " " + e.ChangeType);
+            // eventLog1.WriteEntry("FilwWatcher OnChanged");
+            readTasksName();
         }
 
         protected override void OnStart(string[] args)
         {
             eventLog1.WriteEntry("In OnStart");
 
-            this.tm = new System.Timers.Timer(30000);  // 30000 milliseconds = 30 seconds
+            watcher.Path = AppDomain.CurrentDomain.BaseDirectory;
+            //watcher.Path = System.Configuration.Con ConfigurationManager.AppSettings[AppDomain.CurrentDomain.BaseDirectory + "\\Task.ini"];
+            watcher.EnableRaisingEvents = true;
+            // Add event handlers.
+            watcher.Changed += new FileSystemEventHandler(OnChanged);
+            //watcher.Created += new FileSystemEventHandler(OnChanged);
+            //watcher.Deleted += new FileSystemEventHandler(OnChanged);
+            //watcher.Renamed += new RenamedEventHandler(OnRenamed);
+
+            readTasksName();
+
+            this.tm = new System.Timers.Timer(60000);  // 30000 milliseconds = 30 seconds
             this.tm.AutoReset = true;
             this.tm.Elapsed += new System.Timers.ElapsedEventHandler(this.timer_Elapsed);
             this.tm.Start();
@@ -57,8 +81,59 @@ namespace _1Cbaksrv
         private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             //BuckUper1C.Main(); // my separate static method for do work
-            eventLog1.WriteEntry("Timer tick");
-            readTasksName();
+            //eventLog1.WriteEntry("Timer tick");
+            //readTasksName();
+
+            for (int i = 0; i < lstTask.GetLength(0); i++ )
+            {
+                //eventLog1.WriteEntry("TaskName = " + lstTask[0, i]);
+                //eventLog1.WriteEntry("Hour = " + lstTask[1, i]);
+                //eventLog1.WriteEntry("Minute = " + lstTask[2, i]);
+
+                // Hour
+                if (Convert.ToInt32(lstTask[1, i]) == DateTime.Now.Hour)
+                {
+                    //eventLog1.WriteEntry("Hour = " + lstTask[1, i]);                 
+                    // Minute
+                    if (Convert.ToInt32(lstTask[2, i]) == DateTime.Now.Minute)
+                    {
+                        //eventLog1.WriteEntry("Minute = " + lstTask[2, i]);
+
+                        // Формируем строку с параметрами запуска
+                        string arg = " DESIGNER /DisableStartupMessages ";
+                        string patch = "";
+                  
+                        // 1C путь файлу 1C
+                        patch = _ini.IniReadValue(lstTask[0, i], "file1CPath");
+
+                        // Путь к архивам
+                        arg += " /DumpIB " + _ini.IniReadValue(lstTask[0, i], "backupPath") + "\\" + lstTask[0, i] + "_" + DateTime.Now.ToString().Replace(" ", "_").Replace(":", "-") + ".dt";
+                        // 1C пользователь
+                        arg += " /N\"" + _ini.IniReadValue(lstTask[0, i], "user1C") + "\"";
+                        // 1C пароль
+                        arg += " /P\"" + _ini.IniReadValue(lstTask[0, i], "password1C") + "\"";
+
+                        // вид базы
+                        if (_ini.IniReadValue(lstTask[0, i], "FileOrServer") == "1")
+                        {
+                            // 1C путь к базе
+                            arg += " /F" + _ini.IniReadValue(lstTask[0, i], "base1CPath");
+                        }
+                        else if (_ini.IniReadValue(lstTask[0, i], "FileOrServer") == "2")
+                        {
+                            // 1C сервер
+                            arg += " /S" + _ini.IniReadValue(lstTask[0, i], "server1C");
+                            // 1C база
+                            arg += "\\" + _ini.IniReadValue(lstTask[0, i], "base1C");
+                        }
+
+                        //eventLog1.WriteEntry("arg = " + arg); 
+
+                        // запуск процесса
+                        startBackUp1C(patch, arg, lstTask[0, i]);
+                    }
+                }
+            }
         }
 
         protected override void OnStop()
@@ -79,18 +154,48 @@ namespace _1Cbaksrv
             String[] lstTaskName = _ini.GetSectionNames();
             lstTask = new String[3, lstTaskName.Count()];
 
-            eventLog1.WriteEntry("Task count = " + lstTaskName.Count().ToString());
+            //eventLog1.WriteEntry("Task count = " + lstTaskName.Count().ToString());
 
             int Count = 0;
 
             foreach (String tsk in lstTaskName)
             {
-                eventLog1.WriteEntry(tsk);  
-
+                //eventLog1.WriteEntry(tsk);  
                 readTaskINI(tsk, Count);
                 Count++;
             }
+        }
 
+        // Запуск 1С с параметрами
+        private void startBackUp1C(string patch, string arg, string tsk)
+        {
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = patch;
+            proc.StartInfo.Arguments = arg;
+            proc.EnableRaisingEvents = true;
+            //подписываемся на событие завершения процесса
+            proc.Exited += new EventHandler(endBackUpProcess); // своя процедура обработки
+            
+            proc.Start();
+            // Ожидание завершения
+            proc.WaitForExit();
+
+            if (proc.ExitCode == 0)
+            {
+                eventLog1.WriteEntry("Архивироание бызы " + tsk + " было успешно завершено в " + proc.ExitTime.ToString()); 
+            }
+            else
+            {
+                eventLog1.WriteEntry("Архивироание бызы " + tsk + " было прервано в " + proc.ExitTime.ToString());
+            }
+        }
+
+        private void endBackUpProcess(object sender, System.EventArgs e)
+        {
+            //eventHandled = true;
+            //Console.WriteLine("Exit time:    {0}\r\n" +
+            //    "Exit code:    {1}\r\nElapsed time: {2}", proc.ExitTime, proc.ExitCode, elapsedTime);
+            //eventLog1.WriteEntry("====");
         }
 
         // Чтение параметров задачи
@@ -138,9 +243,9 @@ namespace _1Cbaksrv
 
             if (_ini.IniReadValue(Task, "activ") == "True")
             {
-                eventLog1.WriteEntry("TaskName = " + Task);
-                eventLog1.WriteEntry("Hour = " + _ini.IniReadValue(Task, "taskHour"));
-                eventLog1.WriteEntry("Minute = " + _ini.IniReadValue(Task, "taskMin"));
+                //eventLog1.WriteEntry("TaskName = " + Task);
+                //eventLog1.WriteEntry("Hour = " + _ini.IniReadValue(Task, "taskHour"));
+                //eventLog1.WriteEntry("Minute = " + _ini.IniReadValue(Task, "taskMin"));
 
                 lstTask[0, Count] = Task;
                 lstTask[1, Count] = _ini.IniReadValue(Task, "taskHour");

@@ -352,3 +352,172 @@
    logtoconsole = 
    logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
    assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Выполняется удаление источника EventLog 1CBackUper.
+Предупреждение. Источник 1CBackUper не зарегистрирован на локальном компьютере.
+Выполняется удаление службы 1CBackUper из системы...
+Служба 1CBackUper успешно удалена из системы.
+Выполняется установка сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe
+Устанавливается служба 1CBackUper...
+Служба 1CBackUper успешно установлена.
+Создается исходный EventLog 1CBackUper в журнале Application...
+Выполняется фиксация сборки 'G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.InstallLog
+   assemblypath = G:\Project\C#\1C_Backuper\1Cbaksrv\1Cbaksrv\bin\Debug\1Cbaksrv.exe

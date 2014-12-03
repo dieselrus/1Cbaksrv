@@ -29,17 +29,26 @@
         private void InitializeComponent()
         {
             this.eventLog1 = new System.Diagnostics.EventLog();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.IncludeSubdirectories = true;
             // 
             // BuckUper1C
             // 
             this.ServiceName = "BuckUper1C";
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
 
         }
 
         #endregion
 
         private System.Diagnostics.EventLog eventLog1;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }
