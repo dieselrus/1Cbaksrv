@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Configuration;
+using SevenZip;
 
 namespace _1Cbaksrv
 {
@@ -99,39 +100,52 @@ namespace _1Cbaksrv
                     {
                         //eventLog1.WriteEntry("Minute = " + lstTask[2, i]);
 
-                        // Формируем строку с параметрами запуска
-                        string arg = " DESIGNER /DisableStartupMessages ";
-                        string patch = "";
+                        if (_ini.IniReadValue(lstTask[0, i], "1COr7Zip") == "1")
+                        {
+                            // Формируем строку с параметрами запуска
+                            string arg = " DESIGNER /DisableStartupMessages ";
+                            string patch = "";
                   
-                        // 1C путь файлу 1C
-                        patch = _ini.IniReadValue(lstTask[0, i], "file1CPath");
+                            // 1C путь файлу 1C
+                            patch = _ini.IniReadValue(lstTask[0, i], "file1CPath");
 
-                        // Путь к архивам
-                        arg += " /DumpIB " + _ini.IniReadValue(lstTask[0, i], "backupPath") + "\\" + lstTask[0, i] + "_" + DateTime.Now.ToString().Replace(" ", "_").Replace(":", "-") + ".dt";
-                        // 1C пользователь
-                        arg += " /N\"" + _ini.IniReadValue(lstTask[0, i], "user1C") + "\"";
-                        // 1C пароль
-                        arg += " /P\"" + _ini.IniReadValue(lstTask[0, i], "password1C") + "\"";
+                            // Путь к архивам
+                            arg += " /DumpIB " + _ini.IniReadValue(lstTask[0, i], "backupPath") + "\\" + lstTask[0, i] + "_" + DateTime.Now.ToString().Replace(" ", "_").Replace(":", "-") + ".dt";
+                            // 1C пользователь
+                            arg += " /N\"" + _ini.IniReadValue(lstTask[0, i], "user1C") + "\"";
+                            // 1C пароль
+                            arg += " /P\"" + _ini.IniReadValue(lstTask[0, i], "password1C") + "\"";
 
-                        // вид базы
-                        if (_ini.IniReadValue(lstTask[0, i], "FileOrServer") == "1")
-                        {
-                            // 1C путь к базе
-                            arg += " /F" + _ini.IniReadValue(lstTask[0, i], "base1CPath");
+                            // вид базы
+                            if (_ini.IniReadValue(lstTask[0, i], "FileOrServer") == "1")
+                            {
+                                // 1C путь к базе
+                                arg += " /F" + _ini.IniReadValue(lstTask[0, i], "base1CPath");
+                            }
+                            else if (_ini.IniReadValue(lstTask[0, i], "FileOrServer") == "2")
+                            {
+                                // 1C сервер
+                                arg += " /S" + _ini.IniReadValue(lstTask[0, i], "server1C");
+                                // 1C база
+                                arg += "\\" + _ini.IniReadValue(lstTask[0, i], "base1C");
+                            }
+
+                            // Kill 1C process
+                            if (_ini.IniReadValue(lstTask[0, i], "kill1C") == "True")
+                            {
+                                kill1CProcess();
+                            }
+
+                            //eventLog1.WriteEntry("arg = " + arg); 
+
+                            // запуск процесса
+                            startBackUp1C(patch, arg, lstTask[0, i]);
                         }
-                        else if (_ini.IniReadValue(lstTask[0, i], "FileOrServer") == "2")
-                        {
-                            // 1C сервер
-                            arg += " /S" + _ini.IniReadValue(lstTask[0, i], "server1C");
-                            // 1C база
-                            arg += "\\" + _ini.IniReadValue(lstTask[0, i], "base1C");
-                        }
-
-                        //eventLog1.WriteEntry("arg = " + arg); 
-
-                        // запуск процесса
-                        startBackUp1C(patch, arg, lstTask[0, i]);
                     }
+                }
+                else
+                {
+                    SevenZipCompress(_ini.IniReadValue(lstTask[0, i], "base1CPath"), _ini.IniReadValue(lstTask[0, i], "backupPath"), "\\" + lstTask[0, i] + "_" + DateTime.Now.ToString().Replace(" ", "_").Replace(":", "-") + ".7z");
                 }
             }
         }
@@ -164,6 +178,20 @@ namespace _1Cbaksrv
                 readTaskINI(tsk, Count);
                 Count++;
             }
+        }
+
+        // Закрываем все процессы 1С, для выгрузки базы
+        private void kill1CProcess()
+        {
+
+            Process[] ps1 = System.Diagnostics.Process.GetProcessesByName("1cv8");
+            foreach (Process p1 in ps1)
+            {
+                //Console.WriteLine("Closing process...{0}", p1.ProcessName);
+                eventLog1.WriteEntry("Процесс " + p1.ProcessName + " был закрыт!"); 
+                p1.Kill();
+            }
+
         }
 
         // Запуск 1С с параметрами
@@ -252,6 +280,26 @@ namespace _1Cbaksrv
                 lstTask[2, Count] = _ini.IniReadValue(Task, "taskMin");
             }
         
+        }
+
+        private void SevenZipCompress(String _from, String _to, String _name)
+        {
+            eventLog1.WriteEntry("7zip start. from=" + _from + " to=" + _to + " name=" + _name);
+            // Синхронная упаковка
+            //var cmpr = new SevenZipCompressor();
+            // cmpr.CompressDirectory(@"путь\к\пакуемой\папке", @"имя\архива");
+            //DoFinishEvent();
+            // cmpr = null;
+
+            // Асинхронная упаковка
+            var cmpr = new SevenZipCompressor();
+            cmpr.CompressionFinished += (s, e) =>
+            {
+                //DoFinishEvent();
+                eventLog1.WriteEntry("Архивироание бызы " + _name + " было завершено в " + DateTime.Now.ToString() + ".");
+                cmpr = null;
+            };
+            cmpr.BeginCompressDirectory(_from + "\\1Cv8.1CD", _to);
         }
     }
 
