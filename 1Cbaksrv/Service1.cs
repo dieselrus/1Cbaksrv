@@ -141,12 +141,12 @@ namespace _1Cbaksrv
                             // запуск процесса
                             startBackUp1C(patch, arg, lstTask[0, i]);
                         }
-                    }
-                }
-                else
-                {
-                    SevenZipCompress(_ini.IniReadValue(lstTask[0, i], "base1CPath"), _ini.IniReadValue(lstTask[0, i], "backupPath"), "\\" + lstTask[0, i] + "_" + DateTime.Now.ToString().Replace(" ", "_").Replace(":", "-") + ".7z");
-                }
+                        else
+                        {
+                            SevenZipCompress(_ini.IniReadValue(lstTask[0, i], "base1CPath"), _ini.IniReadValue(lstTask[0, i], "backupPath"), "\\" + lstTask[0, i] + "_" + DateTime.Now.ToString().Replace(" ", "_").Replace(":", "-") + ".7z");
+                        }
+                    }                 
+                } 
             }
         }
 
@@ -284,7 +284,8 @@ namespace _1Cbaksrv
 
         private void SevenZipCompress(String _from, String _to, String _name)
         {
-            eventLog1.WriteEntry("7zip start. from=" + _from + " to=" + _to + " name=" + _name);
+            eventLog1.WriteEntry("7zip start. from=" + _from + " to=" + _to + _name);
+            /*
             // Синхронная упаковка
             //var cmpr = new SevenZipCompressor();
             // cmpr.CompressDirectory(@"путь\к\пакуемой\папке", @"имя\архива");
@@ -300,6 +301,36 @@ namespace _1Cbaksrv
                 cmpr = null;
             };
             cmpr.BeginCompressDirectory(_from + "\\1Cv8.1CD", _to);
+            */
+
+            //string source = @"C:\Users\bout0_000\AppData\Local\Diagnostic_Tool_Blue_Screen\Diagnostic Tool Blue Screen\SF_02-08-13";
+            //string output = @"D:\Zipped.zip";
+            //SevenZipExtractor.SetLibraryPath(@"C:\Program Files\7-Zip\7z.dll");
+
+            //SevenZipCompressor.SetLibraryPath(@"7z.dll");
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\7z.dll")) 
+            {
+                SevenZipCompressor.SetLibraryPath(AppDomain.CurrentDomain.BaseDirectory + "\\7z.dll");
+            }
+            else
+            {
+                eventLog1.WriteEntry("Не найдена 7z.dll.");
+                return;
+            }
+            
+            SevenZipCompressor compressor = new SevenZipCompressor();
+            compressor.ArchiveFormat = OutArchiveFormat.SevenZip;
+            compressor.CompressionMode = CompressionMode.Create;
+            compressor.TempFolderPath = System.IO.Path.GetTempPath();
+            eventLog1.WriteEntry("TempPath = " + System.IO.Path.GetTempPath());
+            //compressor.CompressionFinished += new EventHandler<EventArgs>(cp_CompressionFinished);
+            compressor.CompressionFinished += (s, e) =>
+            {
+                //DoFinishEvent();
+                eventLog1.WriteEntry("Архивироание бызы " + _name + " было завершено в " + DateTime.Now.ToString() + ".");
+                compressor = null;
+            };
+            compressor.CompressDirectory(_from, _to + _name);
         }
     }
 
